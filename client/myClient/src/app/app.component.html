@@ -1,0 +1,16 @@
+<div>
+  <form (submit)="handleSubmit($event)">
+    <input type="text" (input)="handleInput($event)" />
+    <button>Search</button>
+  </form>
+
+  <h1>Input String:</h1>
+  <p>{{state.queryString}}</p>
+
+  <h1>Results</h1>
+  <ul>
+    <li *ngFor="let r of state.queryResults">
+      {{r.Name}}
+    </li>
+  </ul>
+</div>
