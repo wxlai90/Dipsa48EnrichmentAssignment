@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { CategorySearchComponent } from './category-search/category-search.component';
+import { AppRoutingModule } from './app-routing.module';
 
 const appRoutes: Routes = [
   { path: 'something', component: CategorySearchComponent, pathMatch: 'full' }
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true }
     ),
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,29 @@
-<p>category-search works!</p>
+<div>
+    <img src={{details.Thumbnail}} alt="thumbnail" />
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>{{details.Name}}</td>
+        </tr>
+        <tr>
+            <td>Year:</td>
+            <td>{{details.Year}}</td>
+        </tr>
+        <tr>
+            <td>Rank:</td>
+            <td>{{details.Ranks}}</td>
+        </tr>
+        <tr>
+            <td>Average:</td>
+            <td>{{details.Average}}</td>
+        </tr>
+        <tr>
+            <td>Bayes Average:</td>
+            <td>{{details["Bayes average"]}}</td>
+        </tr>
+        <tr>
+            <td>Users rated:</td>
+            <td>{{details["Users rated"]}}</td>
+        </tr>
+    </table>
+</div>

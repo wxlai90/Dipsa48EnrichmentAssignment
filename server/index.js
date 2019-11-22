@@ -30,8 +30,7 @@ app.get('/api/game/:id', (req, res) => {
     client.db('boardgames')
         .collection('games')
         .findOne({ "_id": ObjectId(id) })
-        .then((result => res.send(result.Name))
-            .catch(error => console.log("ERROR!")));
+        .then((result => res.send(result)));
 })
 
 app.listen(PORT, () => console.log(`Started listening on ${PORT}`));
