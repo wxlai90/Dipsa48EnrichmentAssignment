@@ -10,7 +10,7 @@
   <h1>Results</h1>
   <ul>
     <li *ngFor="let r of state.queryResults">
-      {{r.Name}}
+      <a href="/game/{{r._id}}">{{r.Name}}</a>
     </li>
   </ul>
 </div>

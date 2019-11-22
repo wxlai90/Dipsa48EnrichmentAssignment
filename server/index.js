@@ -25,7 +25,7 @@ const name = req.params.name;
         .then(resp => res.json(resp));
 })
 
-app.get('/api/:id', (req, res) => {
+app.get('/api/game/:id', (req, res) => {
     const id = req.params.id
     client.db('boardgames')
         .collection('games')
