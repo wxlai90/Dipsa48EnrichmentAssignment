@@ -19,11 +19,15 @@ export class SearchFormComponent implements OnInit {
   searchGames(form: NgForm) {
     const searchString = form.controls['searchString'].value;
     const type = form.controls['type'].value;
+    if (type == "name") {
+      this.findGameByName(searchString);
+    }
   }
 
 
   findGameByName(name: string) {
     fetch(`http://localhost:3000/api/name/${name}`)
-      .then(resp => resp.json());
+      .then(resp => resp.json())
+      .then(resp => console.log(resp));
   }
 }
