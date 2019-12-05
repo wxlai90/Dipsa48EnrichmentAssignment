@@ -8,9 +8,12 @@ import { MainComponent } from './main/main.component';
 import { CategorySearchComponent } from './category-search/category-search.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { ResultsComponent } from './results/results.component';
+import { OnegameComponent } from './onegame/onegame.component';
 
 const appRoutes: Routes = [
-  { path: 'something', component: CategorySearchComponent, pathMatch: 'full' }
+  { path: '', component: SearchFormComponent, pathMatch: 'full' },
+  { path: 'gamedetails/:id', component: OnegameComponent, pathMatch: 'full' },
 ]
 
 @NgModule({
@@ -18,7 +21,9 @@ const appRoutes: Routes = [
     AppComponent,
     MainComponent,
     CategorySearchComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    ResultsComponent,
+    OnegameComponent
   ],
   imports: [
     RouterModule.forRoot(

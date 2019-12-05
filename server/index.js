@@ -28,10 +28,11 @@ app.get('/api/name/:name', (req, res) => {
 app.get('/api/category/:name', (req, res) => {
     const name = req.params.name;
     client.db('boardgames')
-        .collection('games')
-        .find({ Name: new RegExp(name, 'i') })
+        .collection('details')
+        .find({ boardgamecategory: new RegExp(name, 'i') })
         .toArray()
-        .then(resp => res.json(resp));
+        .then(resp => res.json(resp))
+        .catch(err => res.send('error'));
 })
 
 app.get('/api/game/:id', (req, res) => {

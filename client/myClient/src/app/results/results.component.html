@@ -1,0 +1,14 @@
+<ul>
+    <li *ngFor="let game of results">
+        <div class="game-container">
+            <div class="image">
+                <button routerLink="/gamedetails/{{game.ID}}"><img src={{game.Thumbnail}} /></button>
+            </div>
+            <div class="footer">
+                <p class="detail">Name: {{game.Name}}</p>
+                <p class="detail">Year: {{game.Year}}</p>
+                <p class="detail">Average: {{game.Average}}</p>
+            </div>
+        </div>
+    </li>
+</ul>

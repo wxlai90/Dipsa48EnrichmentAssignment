@@ -9,12 +9,16 @@ import { NgForm } from '@angular/forms'
 })
 export class SearchFormComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
 
   model = new Query("", "");
+
+  results = null;
 
   searchGames(form: NgForm) {
     const searchString = form.controls['searchString'].value;
@@ -35,18 +39,21 @@ export class SearchFormComponent implements OnInit {
   findGamesByName(name: string) {
     fetch(`http://localhost:3000/api/name/${name}`)
       .then(resp => resp.json())
-      .then(resp => console.log(resp));
+      .then(resp => this.results = resp)
+      .then(resp => console.log(this.results));
   }
 
   findGamesByCategory(category: string) {
-    fetch(`http://localhost:3000/api/category/name/${category}`)
+    fetch(`http://localhost:3000/api/category/${category}`)
       .then(resp => resp.json())
-      .then(resp => console.log(resp));
+      .then(resp => this.results = resp)
+      .then(resp => console.log(this.results));
   }
 
-  findDetailsById(category: string) {
-    fetch(`http://localhost:3000/api/category/name/${category}`)
+  findDetailsById(id: number) {
+    fetch(`http://localhost:3000/api/game/${id}`)
       .then(resp => resp.json())
-      .then(resp => console.log(resp));
+      .then(resp => this.results = resp)
+      .then(resp => console.log(this.results));
   }
 }
