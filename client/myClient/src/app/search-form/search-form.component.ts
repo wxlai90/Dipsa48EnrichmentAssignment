@@ -19,14 +19,33 @@ export class SearchFormComponent implements OnInit {
   searchGames(form: NgForm) {
     const searchString = form.controls['searchString'].value;
     const type = form.controls['type'].value;
-    if (type == "name") {
-      this.findGameByName(searchString);
+    switch (type) {
+      case "name":
+        this.findGamesByName(searchString);
+        break
+      case "category":
+        this.findGamesByCategory(searchString);
+        break
+      default:
+        break
     }
   }
 
 
-  findGameByName(name: string) {
+  findGamesByName(name: string) {
     fetch(`http://localhost:3000/api/name/${name}`)
+      .then(resp => resp.json())
+      .then(resp => console.log(resp));
+  }
+
+  findGamesByCategory(category: string) {
+    fetch(`http://localhost:3000/api/category/name/${category}`)
+      .then(resp => resp.json())
+      .then(resp => console.log(resp));
+  }
+
+  findDetailsById(category: string) {
+    fetch(`http://localhost:3000/api/category/name/${category}`)
       .then(resp => resp.json())
       .then(resp => console.log(resp));
   }

@@ -17,7 +17,16 @@ client.connect((err, client) => {
 const app = express();
 
 app.get('/api/name/:name', (req, res) => {
-const name = req.params.name;
+    const name = req.params.name;
+    client.db('boardgames')
+        .collection('games')
+        .find({ Name: new RegExp(name, 'i') })
+        .toArray()
+        .then(resp => res.json(resp));
+})
+
+app.get('/api/category/:name', (req, res) => {
+    const name = req.params.name;
     client.db('boardgames')
         .collection('games')
         .find({ Name: new RegExp(name, 'i') })
@@ -31,6 +40,15 @@ app.get('/api/game/:id', (req, res) => {
         .collection('games')
         .findOne({ "_id": ObjectId(id) })
         .then((result => res.send(result)));
+})
+
+
+app.get('/api/category/id/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    client.db('boardgames')
+        .collection('details')
+        .findOne({ "id": id })
+        .then(result => res.json(result));
 })
 
 app.listen(PORT, () => console.log(`Started listening on ${PORT}`));
