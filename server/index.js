@@ -1,6 +1,7 @@
 const PORT = process.env.PORT || 5000;
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
 
@@ -15,6 +16,8 @@ client.connect((err, client) => {
 });
 
 const app = express();
+
+app.use(bodyParser.json())
 
 app.get('/api/name/:name', (req, res) => {
     const name = req.params.name;
@@ -50,6 +53,25 @@ app.get('/api/category/id/:id', (req, res) => {
         .collection('details')
         .findOne({ "id": id })
         .then(result => res.json(result));
+})
+
+
+app.get('/api/comments/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    client.db('boardgames')
+        .collection('comments')
+        .find({ "gameid": id })
+        .toArray()
+        .then(result => res.json(result));
+})
+
+
+app.post('/api/comment/new', (req, res) => {
+    comment = req.body;
+    client.db('boardgames')
+        .collection('comments')
+        .insertOne({ ...comment })
+        .then((resp) => res.send('ok'));
 })
 
 app.listen(PORT, () => console.log(`Started listening on ${PORT}`));
