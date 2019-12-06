@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { ResultsComponent } from './results/results.component';
 import { OnegameComponent } from './onegame/onegame.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
   { path: '', component: SearchFormComponent, pathMatch: 'full' },
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
