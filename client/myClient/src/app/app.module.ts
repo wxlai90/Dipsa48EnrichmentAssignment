@@ -14,6 +14,7 @@ import { OnegameComponent } from './onegame/onegame.component';
 const appRoutes: Routes = [
   { path: '', component: SearchFormComponent, pathMatch: 'full' },
   { path: 'gamedetails/:id', component: OnegameComponent, pathMatch: 'full' },
+  { path: 'category/:category', component: CategorySearchComponent },
 ]
 
 @NgModule({

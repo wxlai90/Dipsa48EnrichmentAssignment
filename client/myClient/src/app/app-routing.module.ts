@@ -4,7 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { CategorySearchComponent } from './category-search/category-search.component';
 
 const appRoutes = [
-  { path: 'game/:id', component: CategorySearchComponent }
+  { path: 'game/:id', component: CategorySearchComponent },
+  { path: 'category/:category', component: CategorySearchComponent },
+  
+  
 ]
 
 @NgModule({
