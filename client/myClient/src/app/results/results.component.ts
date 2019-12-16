@@ -9,7 +9,8 @@ export class ResultsComponent implements OnInit {
 
   @Input() results: any[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

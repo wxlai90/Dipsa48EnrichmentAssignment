@@ -1,14 +1,33 @@
-<ul>
-    <li *ngFor="let game of results">
-        <div class="game-container">
+<div *ngIf="results[0].Thumbnail">
+    <ul>
+        <li *ngFor="let game of results">
+            <div class="game-container">
+                <div class="image">
+                    <button routerLink="/gamedetails/{{game.ID}}"><img src={{game.Thumbnail}} /></button>
+                </div>
+                <div class="footer">
+                    <p class="detail">Name: {{game.Name}}</p>
+                    <p class="detail">Year: {{game.Year}}</p>
+                    <p class="detail">Average: {{game.Average}}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="results[0].boardgamecategory">
+    <ul>
+        <li *ngFor="let game of results">
+            <button routerLink="/gamedetails/{{game.id}}"><img src={{game.thumbnail}} /></button>
             <div class="image">
-                <button routerLink="/gamedetails/{{game.ID}}"><img src={{game.Thumbnail}} /></button>
+                <div class="game-container">
+                </div>
+                <p class="detail">Name: {{game.primary}}</p>
+                <p class="detail">Year: {{game.yearpublished}}</p>
+                <p class="detail">Average: {{game.average}}</p>
+                <div class="footer">
+                </div>
             </div>
-            <div class="footer">
-                <p class="detail">Name: {{game.Name}}</p>
-                <p class="detail">Year: {{game.Year}}</p>
-                <p class="detail">Average: {{game.Average}}</p>
-            </div>
-        </div>
-    </li>
-</ul>
+        </li>
+    </ul>
+</div>
