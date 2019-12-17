@@ -9,30 +9,10 @@ export class ResultsComponent implements OnInit {
 
   @Input() results: any[];
 
- id = 'ID';
- pic = 'Thumbnail';
- name = 'Name';
- year = 'Year';
- avg = 'Average';
-
-constructor() { }
-
-ngOnInit() {
-
-
+  constructor() {
   }
 
-
-  changeValues = () => {
-    if (this.results[0].image !== null) {
-      this.id = 'id';
-      this.pic = 'image';
-      this.name
-
-    }
-
-
-  }
+  
 
 
 
